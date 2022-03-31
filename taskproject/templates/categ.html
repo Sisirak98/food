@@ -1,0 +1,41 @@
+{% if category %}
+<div class="container">
+                    <div class="row mx-auto">
+                        {% for pro in products.object_list %}
+                            <div class="my_bottom_margin  col-sm-12 col-md-4 col-lg-4">
+
+                                <div class="card mt-5 text-center my_card" style="max-width:70rem;">
+                                    <div>
+<div>
+                                    <a href="{{pro.get_url}}"><img class="card-image-top my-image" src="{{pro.img.url}}" alt="{{pro.name}}" style="width:350px;height:250px"></a>
+                                    <div class="card-body">
+                                        <h5>{{pro.name}}</h5>
+                                        <h6>{{pro.price}}</h6>
+
+</div>
+                                    </div>
+                                        </div>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="mx-auto">
+                        {% if products.paginator.num_pages > 1 %}
+
+                        <hr>
+                        <div class="text-center">
+
+                            {% for pg in products.paginator.page_range %}
+                            <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <br>
+                </div>
+{% else %}
+
+<h4 style="color:orange;font-size:25px;text-align:center;"></h4>
+{% endif %}
